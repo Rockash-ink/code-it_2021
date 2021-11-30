@@ -3,6 +3,7 @@ public class App {
         System.out.println("Hello, World!");
         System.out.println("scemo");
         System.out.println("potaa");
+        System.out.println("TEST");
 
     }
 }
