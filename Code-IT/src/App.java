@@ -7,7 +7,8 @@ public class App extends JFrame {
         window.setVisible(true);
         window.setTitle("Code-it");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+    
+        
     }
 
     
