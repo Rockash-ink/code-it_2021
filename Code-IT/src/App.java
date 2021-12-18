@@ -1,12 +1,13 @@
-public class App {
+import javax.swing.*;
+
+public class App extends JFrame {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
-        System.out.println("scemo");
-        System.out.println("potaa");
-        System.out.println("hi im myleeeee");
-        System.out.println("brandon");
-        System.out.println("take ignazio from here pls");
-        System.out.println("MUIE PSD");
+        App window = new App();
+        window.setSize(500,500);
+        window.setVisible(true);
+        window.setTitle("Code-it");
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 
     
