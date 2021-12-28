@@ -8,7 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.*;
 
-class MainFrame extends JFrame {
+class MainFrame extends JFrame{
     StartupVideo intro_Jlabel = new StartupVideo(); // startup video component reference
     SideBar leftSideBar = new SideBar();
     HomePage homePage = new HomePage();
@@ -29,6 +29,7 @@ class MainFrame extends JFrame {
                                                              // kill it with task manager
         this.setMinimumSize(new Dimension(1280, 720));
         this.add(intro_Jlabel); // add the intro compotent
+
 
         if (useStartupVideo) {
             startupVideo();
@@ -72,8 +73,27 @@ class MainFrame extends JFrame {
         this.setLayout(new BorderLayout());
         this.add(leftSideBar, BorderLayout.WEST);
         this.add(homePage, BorderLayout.CENTER);
+        this.add(homePage, BorderLayout.CENTER);
+        sideBarButtonsListeners();
         leftSideBar.makeVisible();
-
     }
 
+
+    
+    void sideBarButtonsListeners(){
+        this.leftSideBar.button.addActionListener(e -> makeHomePageVisible());
+        this.leftSideBar.button2.addActionListener(e -> makeHomePageInvisible());
+        this.leftSideBar.button3.addActionListener(e -> System.out.println("This is button3"));
+        this.leftSideBar.button4.addActionListener(e -> System.out.println("This is button4"));
+        this.leftSideBar.button5.addActionListener(e -> System.out.println("This is button5"));
+    }
+
+
+
+    void makeHomePageInvisible(){
+        this.homePage.setVisible(false);
+    }
+    void makeHomePageVisible(){
+        this.homePage.setVisible(true);
+    }
 }

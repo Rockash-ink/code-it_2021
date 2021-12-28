@@ -10,15 +10,12 @@ public class HomePage extends JPanel {
     TopSideHome topSideHome_Jpanel = new TopSideHome();
     JLabel welcomeText_topSideHome_JLabel = new JLabel(); //label with
     HomePadding homePadding_Jpanel = new HomePadding();
-
+    
     public HomePage(){ 
-
         this.setBackground(Color.RED);
         this.setPreferredSize(new Dimension(100,100));
         this.setLayout(new BorderLayout(10,10));
         makeHome();
-
-
     }
     void makeHome(){
         this.add(topSideHome_Jpanel,BorderLayout.NORTH); 

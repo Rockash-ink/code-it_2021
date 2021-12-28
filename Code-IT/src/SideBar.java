@@ -5,6 +5,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import HomePage.HomePage;
+
 public class SideBar extends JPanel{
     JButton button;
     JButton button2;
@@ -12,6 +14,7 @@ public class SideBar extends JPanel{
     JButton button4;
     JButton button5;
     ImageIcon button_image = new ImageIcon("res/home.png");
+    
 
 
     SideBar(){      
@@ -21,7 +24,6 @@ public class SideBar extends JPanel{
         button4 = new JButton();
         button5 = new JButton();
 
-        button.addActionListener(e -> System.out.println("hehe"));
         
         
         button.setPreferredSize(new Dimension(55,55));
@@ -49,6 +51,7 @@ public class SideBar extends JPanel{
     void makeVisible(){
         this.setVisible(true);
     }
+    
     
     
 }
