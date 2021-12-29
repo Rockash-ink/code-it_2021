@@ -23,20 +23,20 @@ class TopSideHome extends JPanel {
         topSideSettings();
     }
     void welcomeTextSettings(){
-        welcomeText_topSideHome_JLabel.setPreferredSize(new Dimension(100,10));
+        welcomeText_topSideHome_JLabel.setPreferredSize(new Dimension(250,250));
         welcomeText_topSideHome_JLabel.setOpaque(true);
         welcomeText_topSideHome_JLabel.setBackground(Color.yellow); //
         this.add(welcomeText_topSideHome_JLabel,BorderLayout.WEST);
     }
     void rapidResearchButtonSetiings(){
-        rapidResearchButton_JButton.setPreferredSize(new Dimension(150,100));
+        rapidResearchButton_JButton.setPreferredSize(new Dimension(100,100));
         this.add(rapidResearchButton_JButton,BorderLayout.EAST);
     }
     void topSideSettings(){
         topSide_JLabel.setPreferredSize(new Dimension(250,250));
         topSide_JLabel.setText("<html>Welcome back!<br/>Im Happy to see you!</html>");
         topSide_JLabel.setOpaque(true);
-        topSide_JLabel.setBackground(Color.CYAN);
+        topSide_JLabel.setBackground(Color.orange);
         this.add(topSide_JLabel);
     }
 

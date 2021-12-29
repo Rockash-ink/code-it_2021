@@ -5,7 +5,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import HomePage.HomePage;
 
 public class SideBar extends JPanel{
     JButton button;
@@ -36,7 +35,7 @@ public class SideBar extends JPanel{
        
 
         this.setBackground(Color.BLUE);
-        this.setPreferredSize(new Dimension(70,100));
+        this.setPreferredSize(new Dimension(100,0));
         this.setVisible(false);
 
 
@@ -48,10 +47,4 @@ public class SideBar extends JPanel{
 
         
     }
-    void makeVisible(){
-        this.setVisible(true);
-    }
-    
-    
-    
 }

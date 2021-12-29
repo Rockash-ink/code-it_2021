@@ -13,12 +13,15 @@ public class HomePage extends JPanel {
     
     public HomePage(){ 
         this.setBackground(Color.RED);
-        this.setPreferredSize(new Dimension(100,100));
+        
         this.setLayout(new BorderLayout(10,10));
         makeHome();
+        this.setVisible(false);
     }
     void makeHome(){
         this.add(topSideHome_Jpanel,BorderLayout.NORTH); 
         this.add(homePadding_Jpanel);
     }
+    
+
 } 
