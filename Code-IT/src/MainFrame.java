@@ -83,9 +83,9 @@ class MainFrame extends JFrame{
         mainFrame.setLayout(new BorderLayout()); //use the borderlayout manager
         mainFrame.add(leftSideBar, BorderLayout.LINE_START); // left side bar added.
        // mainFrame.add(leftSideBarMenu, BorderLayout.CENTER);
-        mainFrame.add(centre);
-        centre.add(homePage); //homepage added / by default is BorderLayout.center
-        centre.add(workArea); // work area page added / by default is BorderLayout.center
+        mainFrame.add(centre); // this is the centre of the screen / by default is BorderLayout.center
+        centre.add(homePage); //homepage added 
+        centre.add(workArea); // work area page added 
         
     
         

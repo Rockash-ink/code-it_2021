@@ -3,11 +3,11 @@ package WorkArea;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Color;
 public class WorkArea extends JPanel {
     SideBarMenu sideBarMenu = new SideBarMenu();
     public WorkArea(){
+        
         this.setBackground(Color.RED);
         
         this.setLayout(new BorderLayout(10,10));
