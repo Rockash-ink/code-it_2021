@@ -15,7 +15,7 @@ class MainFrame extends JFrame{
     JPanel centre = new JPanel(new CardLayout());
     StartupVideo intro_Jlabel = new StartupVideo(); // startup video component reference
     SideBar leftSideBar = new SideBar(); //this is the left side bar with all the buttons
-    SideBarMenu leftSideBarMenu = new SideBarMenu(); //?? i dont remember
+   // SideBarMenu leftSideBarMenu = new SideBarMenu(); //?? i dont remember
     HomePage homePage = new HomePage(); // this is the homepage
     WorkArea workArea = new WorkArea(); // this is the workArea Page
     
@@ -28,6 +28,9 @@ class MainFrame extends JFrame{
      */
 
     MainFrame() {
+
+        
+
         this.setVisible(true); // make the frame visible when inizialized
         this.setTitle("Code-it"); // set the window name
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH); // maximize the window

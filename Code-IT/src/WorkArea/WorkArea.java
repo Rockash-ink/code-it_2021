@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 public class WorkArea extends JPanel {
-    SideBarMenu sideBarMenu = new SideBarMenu();
+    final SideBarMenu sideBarMenu = new SideBarMenu();
     public WorkArea(){
         
         this.setBackground(Color.RED);

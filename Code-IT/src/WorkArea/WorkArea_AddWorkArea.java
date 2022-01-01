@@ -1,29 +1,26 @@
 package WorkArea;
 
-import javax.swing.BoxLayout;
+
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
-
-
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.Frame;
 
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import filesReadWrite.CreateFile;
 
 final class WorkArea_AddWorkArea extends JFrame{
     final JPanel workArea_MainPanel = new JPanel();
     final JPanel workArea_MainPanel_Centre = new JPanel(new CardLayout());
-    final JButton newCard_JButton = new JButton();
-    final JPanel makeNewCard_Jpanel = new JPanel();
+    final JButton newBoard_JButton = new JButton();
+    final JPanel makeNewBoard_Jpanel = new JPanel();
 
     WorkArea_AddWorkArea(){
         setBounds(100,100,467,315);
@@ -36,20 +33,20 @@ final class WorkArea_AddWorkArea extends JFrame{
 
         this.add(workArea_MainPanel_Centre);
         //to centre
-        newCard_JButton.setText("New Card");
-        newCard_JButton.addActionListener(e -> setVisibleNewCardPanel());
-        workArea_MainPanel.add(newCard_JButton);
+        newBoard_JButton.setText("New Board");
+        newBoard_JButton.addActionListener(e -> setVisibleNewBoardPanel());
+        workArea_MainPanel.add(newBoard_JButton);
 
         workArea_MainPanel_Centre.add(workArea_MainPanel);
-        workArea_MainPanel_Centre.add(makeNewCard_Jpanel);
+        workArea_MainPanel_Centre.add(makeNewBoard_Jpanel);
         
 
         workArea_MainPanel.setBackground(Color.BLACK);
-        makeNewCard_Jpanel.setBackground(Color.blue);
+        makeNewBoard_Jpanel.setBackground(Color.blue);
 
-        makeNewCard_Jpanel.setVisible(false);
+        makeNewBoard_Jpanel.setVisible(false);
 
-        makeNewCardPanel();
+        makeNewBoardPanel();
 
        
 
@@ -59,7 +56,7 @@ final class WorkArea_AddWorkArea extends JFrame{
             public void windowClosing(WindowEvent evt) {
                Frame frame = (Frame) evt.getSource();
                System.out.println("Closing = "+frame.getTitle());
-               newCard_JButton.setVisible(true);
+               newBoard_JButton.setVisible(true);
                workArea_MainPanel.setVisible(true);
             }
         };
@@ -67,31 +64,41 @@ final class WorkArea_AddWorkArea extends JFrame{
         
     }
     
-    void makeNewCardPanel(){
-        //for  makeNewCard_Jpanel
-        final JLabel textMakeCard = new JLabel();
-        final JLabel textNameCard = new JLabel();
-        final JTextField nameCard = new JTextField();
+    void makeNewBoardPanel(){
+        //for  makeNewBoard_Jpanel
+        final JLabel textMakeBoard = new JLabel();
+        final JLabel textNameBoard = new JLabel();
+        final JTextField nameBoard = new JTextField();
 
-        final JButton makeCardButton_jButton = new JButton();
+        final JButton makeBoardButton_jButton = new JButton();
         final JButton cancelButton = new JButton();
 
-        textMakeCard.setText("Create Card");
-        textNameCard.setText("Card Name");
-        nameCard.setText("new Card");
-        makeCardButton_jButton.setText("Create Card");
+        textMakeBoard.setText("Create Board");
+       
+        nameBoard.setText("new Board");
+        makeBoardButton_jButton.setText("Create Board");
         cancelButton.setText("Cancel");
+
+        cancelButton.addActionListener(e -> this.dispose());
+        makeBoardButton_jButton.addActionListener(e -> createBoard(nameBoard.getText()));
         
-        makeNewCard_Jpanel.add(textMakeCard);
-        makeNewCard_Jpanel.add(textNameCard);
-        makeNewCard_Jpanel.add(nameCard);
-        makeNewCard_Jpanel.add(makeCardButton_jButton);
-        makeNewCard_Jpanel.add(cancelButton);
+        makeNewBoard_Jpanel.add(textMakeBoard);
+        makeNewBoard_Jpanel.add(textNameBoard);
+        makeNewBoard_Jpanel.add(nameBoard);
+        makeNewBoard_Jpanel.add(makeBoardButton_jButton);
+        makeNewBoard_Jpanel.add(cancelButton);
 
     }
-    void setVisibleNewCardPanel(){
-        newCard_JButton.setVisible(false);
+    void setVisibleNewBoardPanel(){
+        newBoard_JButton.setVisible(false);
         workArea_MainPanel.setVisible(false);
-        makeNewCard_Jpanel.setVisible(true);
+        makeNewBoard_Jpanel.setVisible(true);
     }
+    void createBoard(String text){
+        //this will create boards.
+        CreateFile.createFile(text);
+        CreateFile.writeFile(text);
+        this.dispose();
+    }
+
 }

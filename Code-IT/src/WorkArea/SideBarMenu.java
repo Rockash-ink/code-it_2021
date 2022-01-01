@@ -7,13 +7,15 @@ import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.Color;
 
-public class SideBarMenu extends JPanel {
+public final class SideBarMenu extends JPanel {
     JLabel workAreaTitleText_JLabel = new JLabel();
-    SideBarMenuFunctions box_ComboBox = new SideBarMenuFunctions();
+    final SideBarMenuFunctions sideBarMenuFunctions_Jpanel;
     
     
 
     public SideBarMenu() {
+        
+        sideBarMenuFunctions_Jpanel = new SideBarMenuFunctions();
         this.setOpaque(true);
         this.setBackground(Color.WHITE);
         this.setPreferredSize(new Dimension(200,150));
@@ -28,7 +30,7 @@ public class SideBarMenu extends JPanel {
         
 
         this.add(workAreaTitleText_JLabel);
-        this.add(box_ComboBox);
+        this.add(sideBarMenuFunctions_Jpanel);
         
         
     }
