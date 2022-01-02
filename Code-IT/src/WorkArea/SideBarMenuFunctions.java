@@ -21,7 +21,7 @@ public final class SideBarMenuFunctions extends JPanel implements ActionListener
     public String[] workSpacesList = {"First","Second"};
 
     JPanel firstHalfSideJPanel = new JPanel();
-    JPanel secondHalfSidPanel = new JPanel();
+    static JPanel secondHalfSidPanel = new JPanel();
     //on first
     JComboBox comboBox_JComboBox = new JComboBox(workSpacesList);
     JButton workAreaAdd_JButton = new JButton();
@@ -31,6 +31,10 @@ public final class SideBarMenuFunctions extends JPanel implements ActionListener
     WorkArea_AddWorkArea addWorkArea;
     
 
+    //files
+    static HashSet<String> files_jlabelNames = new HashSet<String>();
+    static JLabel files_JLabel;
+
 
     SideBarMenuFunctions(){
         
@@ -38,6 +42,7 @@ public final class SideBarMenuFunctions extends JPanel implements ActionListener
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         add(firstHalfSideJPanel);
         add(secondHalfSidPanel);
+        
     
         firstHalfSideJPanel.add(comboBox_JComboBox);
         comboBox_JComboBox.setPreferredSize(new Dimension(200,20));
@@ -76,16 +81,30 @@ public final class SideBarMenuFunctions extends JPanel implements ActionListener
         addWorkArea.makeNewBoard_Jpanel.setVisible(false);
         addWorkArea.newBoard_JButton.setVisible(true);
     }
-    void addItemsToSecondSide(String filename){
+    static void addItemsToSecondSide(String newFilename){
         File folder = new File("files");   
-        HashSet<String> files = ReadFile.readAllFiles(folder);
+        HashSet<String> files = ReadFile.getReadAllFilesName(folder);
+
         for (final String file : files){
-            JLabel files_JLabel = new JLabel();
+           // if(files_JLabel.getName() == file) {}
+           if(!(files_jlabelNames.contains(file))) {
+            files_JLabel = new JLabel();
+            files_JLabel.setName(file);
             files_JLabel.setPreferredSize(new Dimension(200,20));
-            files_JLabel.setText(file);
+            files_JLabel.setText(file + " Board");
             files_JLabel.setHorizontalTextPosition(JLabel.CENTER);
             secondHalfSidPanel.add(files_JLabel);
-
+            
+            files_jlabelNames.add(file);
+            if(newFilename != null) {
+                files_jlabelNames.add(newFilename);
+            }
+            System.out.println("I added this item in the halfmenu - : " + files_JLabel.getName());
+           }
         }
+    }
+    static void repaintThis(){
+        secondHalfSidPanel.repaint();
+        secondHalfSidPanel.revalidate();
     }
 }

@@ -98,6 +98,9 @@ final class WorkArea_AddWorkArea extends JFrame{
         //this will create boards.
         CreateFile.createFile(text);
         CreateFile.writeFile(text);
+        
+        SideBarMenuFunctions.addItemsToSecondSide(text);
+        SideBarMenuFunctions.repaintThis();
         this.dispose();
     }
 
