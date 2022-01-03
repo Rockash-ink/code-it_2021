@@ -22,11 +22,14 @@ public class CreateFile {
         }
     }
 
-    public static void writeFile(String filename){
+    public static void writeFile(String filename,String Type){
         try {
             FileWriter myWriter = new FileWriter("files/" + filename + ".csv");
-            myWriter.write("im writhing this,");
-            myWriter.write("im writhing that");
+            myWriter.write("Type,");
+            myWriter.write("Name,");
+            myWriter.write("Options,");
+            myWriter.write("\n"+Type+",");
+            myWriter.write(filename+",");
             myWriter.close();
             System.out.println("i successfully write");
 

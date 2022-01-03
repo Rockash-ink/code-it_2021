@@ -2,7 +2,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import HomePage.HomePage;
-import WorkArea.SideBarMenu;
 import WorkArea.WorkArea;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;

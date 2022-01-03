@@ -23,10 +23,11 @@ final class WorkArea_AddWorkArea extends JFrame{
     final JPanel makeNewBoard_Jpanel = new JPanel();
 
     WorkArea_AddWorkArea(){
-        setBounds(100,100,467,315);
+        setBounds(400,200,467,315);
         setVisible(false);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
+        setResizable(false);
 
 
         
@@ -76,6 +77,7 @@ final class WorkArea_AddWorkArea extends JFrame{
         textMakeBoard.setText("Create Board");
        
         nameBoard.setText("new Board");
+        textNameBoard.setText("Board Name");
         makeBoardButton_jButton.setText("Create Board");
         cancelButton.setText("Cancel");
 
@@ -97,7 +99,7 @@ final class WorkArea_AddWorkArea extends JFrame{
     void createBoard(String text){
         //this will create boards.
         CreateFile.createFile(text);
-        CreateFile.writeFile(text);
+        CreateFile.writeFile(text,"Board");
         
         SideBarMenuFunctions.addItemsToSecondSide(text);
         SideBarMenuFunctions.repaintThis();
