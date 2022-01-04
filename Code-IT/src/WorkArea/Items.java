@@ -29,7 +29,7 @@ public class Items extends JLabel {
         this.setBackground(Color.CYAN);
         this.setOpaque(true);
         
-        imageIcon = new ImageIcon(new ImageIcon("res/BoardImage.jpeg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+        imageIcon = new ImageIcon(new ImageIcon("res/BoardImage.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
         this.setIcon(imageIcon);
 
         //System.out.println(ReadFile.readFile("files/" +file + ".csv","fileType"));
