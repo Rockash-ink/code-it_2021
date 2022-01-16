@@ -1,131 +1,110 @@
 package HomePage;
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.plaf.DimensionUIResource;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+
 
 
 
 public class HomePadding extends JPanel {
-    HomeFeed homeFeed_Jlabel = new HomeFeed();
-    JLabel a = new JLabel();
-    JLabel b = new JLabel();
-    String Text1 = "Expand";
-    JPanel mainPanel_homePadding;
-    JToggleButton isMetric;
-    JScrollBar vbar;
-    JLabel label = new JLabel();
-    JScrollPane scrollPane = new JScrollPane();
-    JButton recentTab  = new JButton(Text1) ;
-    JButton myWorkSpace = new JButton(Text1) ;
-    Boolean panelexpanded = true;
-    JPanel panel2 ;
-    JPanel panel;
-    Boolean panel2expanded = true;
+    final private HomeFeed homeFeed_Jlabel = new HomeFeed();
+    final private JLabel leftsidepadding = new JLabel();
+    final private JLabel rightsidepadding = new JLabel();
+    final private String Text1 = "Expand";
+    private JPanel mainPanel_homePadding;
+    final private JLabel label = new JLabel();
+    
+    final private JButton recentTab  = new JButton(Text1) ;
+    final private JButton myWorkSpace = new JButton(Text1) ;
+    private Boolean panelexpanded = true;
+    private JPanel myWorkSpacePanel ;
+    private JPanel recentTabPanel;
+    private Boolean panel2expanded = true;
     
 
-   
-  
-  
-    HomePadding(){
 
-    paddingSettings();
-    
-
-        
-    this.a.setPreferredSize(new Dimension(20,20));
-   a.setOpaque(true);
-   a.setBackground(Color.YELLOW);
-   a.setLayout(new BorderLayout());
-    this.b.setPreferredSize(new Dimension(20,20));
-    b.setOpaque(true);
-    b.setBackground(Color.YELLOW);
-    b.setLayout(new BorderLayout(2000,2000));
-    ScrollPane();
-
-    
-  
-    
-    
-    
-
-    this.add(a,BorderLayout.WEST);
-    this.add(b,BorderLayout.EAST);
-
-       
+ protected HomePadding(){
+   paddingSettings();      
+   leftsidepadding.setPreferredSize(new Dimension(20,20));
+   leftsidepadding.setOpaque(true);
+   leftsidepadding.setBackground(Color.YELLOW);
+   leftsidepadding.setLayout(new BorderLayout());
+    rightsidepadding.setPreferredSize(new Dimension(20,20));
+    rightsidepadding.setOpaque(true);
+    rightsidepadding.setBackground(Color.YELLOW);
+    rightsidepadding.setLayout(new BorderLayout(2000,2000));
+    add(leftsidepadding,BorderLayout.WEST);
+    add(rightsidepadding,BorderLayout.EAST);
     }
 
 
-    void paddingSettings(){
+void paddingSettings(){
         homeFeed_Jlabel.setLayout(new BorderLayout());     
-        this.setOpaque(true);
-        this.setLayout(new BorderLayout(0,0));
+        setOpaque(true);
+        setLayout(new BorderLayout(0,0));
     
         
 
-// Main panel 
-
+// Main recentTabPanel 
          mainPanel_homePadding = new JPanel();
          mainPanel_homePadding.setBackground(Color.GRAY);
          mainPanel_homePadding.setLayout(new BorderLayout(10,10));
             
-         recentTab.addActionListener(e->recentAction());
-        // Panel 1
-                panel = new JPanel();
-                panel.setPreferredSize(new Dimension(500,500));
-                panel.setBackground(Color.lightGray);
-                panel.add(new JLabel("Recent Work"));
-                panel.add(recentTab);
-                mainPanel_homePadding.add(panel,BorderLayout.NORTH);
+                 // Panel 1
+                recentTab.addActionListener(e->recentAction());
+                recentTabPanel = new JPanel();
+                recentTabPanel.setPreferredSize(new Dimension(500,500));
+                recentTabPanel.setBackground(Color.lightGray);
+                recentTabPanel.add(new JLabel("Recent Work"));
+                recentTabPanel.add(recentTab);
+                mainPanel_homePadding.add(recentTabPanel,BorderLayout.NORTH);
 
-                myWorkSpace.addActionListener(e->myWorkAction());
+                
                 // Panel 2
-                panel2 = new JPanel();
-                panel2.setPreferredSize(new Dimension(500,500));
-                panel2.setBackground(Color.lightGray);
-                panel2.add(new JLabel("My Workspace"));  
-                panel2.add(myWorkSpace);
-                mainPanel_homePadding.add(panel2,BorderLayout.SOUTH);
-
-        this.add(mainPanel_homePadding);
-        
-   
-    }
-    public void ScrollPane(){
- 
-        scrollPane.setPreferredSize(new Dimension(300,300));
+                myWorkSpace.addActionListener(e->myWorkAction());
+                myWorkSpacePanel = new JPanel();
+                myWorkSpacePanel.setPreferredSize(new Dimension(500,500));
+                myWorkSpacePanel.setBackground(Color.lightGray);
+                myWorkSpacePanel.add(new JLabel("My Workspace"));  
+                myWorkSpacePanel.add(myWorkSpace);
+                mainPanel_homePadding.add(myWorkSpacePanel,BorderLayout.SOUTH);
+                add(mainPanel_homePadding);
     }
 
-
-
-
+// expaded action for recentTabPanel 2
     void myWorkAction(){
             if (panel2expanded){
                     panel2expanded = false;
-                    panel2.setPreferredSize(new Dimension(500,100));
-                    panel2.revalidate();
-                    panel2.repaint();
+                    myWorkSpacePanel.setPreferredSize(new Dimension(500,100));
+                    myWorkSpacePanel.revalidate();
+                    myWorkSpacePanel.repaint();
                     
             }
             else {
                     panel2expanded = true;
-                    panel2.setPreferredSize(new Dimension(500,500));
-                    panel2.revalidate();
-                    panel2.repaint();
+                    myWorkSpacePanel.setPreferredSize(new Dimension(500,500));
+                    myWorkSpacePanel.revalidate();
+                    myWorkSpacePanel.repaint();
                     
             }
     }
+    // extended action recentTabPanel 
     void recentAction(){
             if (panelexpanded){
                     panelexpanded = false;
-                    panel.setPreferredSize(new Dimension(500,100));
-                    panel.revalidate();
-                    panel.repaint();
+                    recentTabPanel.setPreferredSize(new Dimension(500,100));
+                    recentTabPanel.revalidate();
+                    recentTabPanel.repaint();
             }
             else {
                     panelexpanded = true;
-                    panel.setPreferredSize(new Dimension(500,500));
-                    panel.revalidate();
-                    panel.repaint();
+                    recentTabPanel.setPreferredSize(new Dimension(500,500));
+                    recentTabPanel.revalidate();
+                    recentTabPanel.repaint();
             }
     }
 
