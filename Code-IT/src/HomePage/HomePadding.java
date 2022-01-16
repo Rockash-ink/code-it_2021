@@ -1,42 +1,52 @@
 package HomePage;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.plaf.DimensionUIResource;
 
 
-public class HomePadding extends JPanel{
+
+public class HomePadding extends JPanel {
     HomeFeed homeFeed_Jlabel = new HomeFeed();
     JLabel a = new JLabel();
     JLabel b = new JLabel();
-    private String Text1 = "Use";
-    private String Text2 = "Preview";
+    String Text1 = "Expand";
     JPanel mainPanel_homePadding;
+    JToggleButton isMetric;
+    JScrollBar vbar;
+    JLabel label = new JLabel();
+    JScrollPane scrollPane = new JScrollPane();
+    JButton recentTab  = new JButton(Text1) ;
+    JButton myWorkSpace = new JButton(Text1) ;
+    Boolean panelexpanded = true;
+    JPanel panel2 ;
+    JPanel panel;
+    Boolean panel2expanded = true;
+    
+
+   
   
   
     HomePadding(){
+
     paddingSettings();
+    
 
         
-    this.a.setPreferredSize(new Dimension(100,50));
+    this.a.setPreferredSize(new Dimension(20,20));
    a.setOpaque(true);
    a.setBackground(Color.YELLOW);
-   b.setLayout(new BorderLayout());
-    this.b.setPreferredSize(new Dimension(100,50));
+   a.setLayout(new BorderLayout());
+    this.b.setPreferredSize(new Dimension(20,20));
     b.setOpaque(true);
-    b.setBackground(Color.yellow);
-    JScrollBar hbar = new JScrollBar(JScrollBar.HORIZONTAL, 30, 20, 0, 500);
-    JScrollBar vbar = new JScrollBar(JScrollBar.VERTICAL, 30, 40, 0, 500);
+    b.setBackground(Color.YELLOW);
+    b.setLayout(new BorderLayout(2000,2000));
+    ScrollPane();
 
-
-    b.add(hbar);
-    b.add(vbar);
-
+    
+  
+    
+    
+    
 
     this.add(a,BorderLayout.WEST);
     this.add(b,BorderLayout.EAST);
@@ -47,59 +57,82 @@ public class HomePadding extends JPanel{
 
     void paddingSettings(){
         homeFeed_Jlabel.setLayout(new BorderLayout());     
-        JScrollPane scrollFrame = new JScrollPane(homeFeed_Jlabel);
-        this.setAutoscrolls(true);
-        scrollFrame.setPreferredSize(new Dimension(800,300));
-        this.add(scrollFrame);
         this.setOpaque(true);
-        this.setBackground(Color.BLACK);
         this.setLayout(new BorderLayout(0,0));
     
         
 
 // Main panel 
 
-         mainPanel_homePadding = new JPanel( new FlowLayout(FlowLayout.CENTER, 10, 10) );
+         mainPanel_homePadding = new JPanel();
          mainPanel_homePadding.setBackground(Color.GRAY);
-
+         mainPanel_homePadding.setLayout(new BorderLayout(10,10));
             
+         recentTab.addActionListener(e->recentAction());
         // Panel 1
-
-                JPanel panel = new JPanel();
-                panel.setPreferredSize(new Dimension(150,150));
+                panel = new JPanel();
+                panel.setPreferredSize(new Dimension(500,500));
                 panel.setBackground(Color.lightGray);
-                panel.setLayout(new FlowLayout());
-                panel.add(new JButton(Text1));
-                panel.add(new JButton(Text2));
-                mainPanel_homePadding.add(panel);
-        
-        // Panel 2
+                panel.add(new JLabel("Recent Work"));
+                panel.add(recentTab);
+                mainPanel_homePadding.add(panel,BorderLayout.NORTH);
 
-                JPanel panel2 = new JPanel();
-                panel2.setPreferredSize(new Dimension(150,150));
+                myWorkSpace.addActionListener(e->myWorkAction());
+                // Panel 2
+                panel2 = new JPanel();
+                panel2.setPreferredSize(new Dimension(500,500));
                 panel2.setBackground(Color.lightGray);
-                panel2.setLayout(new FlowLayout());
-                panel2.add(new JButton("Use"));
-                panel2.add(new JButton("Preview"));
-                mainPanel_homePadding.add(panel2);
-
-        // Panel 3
-
-                JPanel panel3 = new JPanel();
-                panel3.setPreferredSize(new Dimension(150,150));
-                panel3.setBackground(Color.lightGray);
-                panel3.setLayout(new FlowLayout());
-                panel3.add(new JButton("Use"));
-                panel3.add(new JButton("Preview"));
-                panel.setVerifyInputWhenFocusTarget(true);
-                mainPanel_homePadding.add(panel3);
+                panel2.add(new JLabel("My Workspace"));  
+                panel2.add(myWorkSpace);
+                mainPanel_homePadding.add(panel2,BorderLayout.SOUTH);
 
         this.add(mainPanel_homePadding);
         
-        
+   
+    }
+    public void ScrollPane(){
+ 
+        scrollPane.setPreferredSize(new Dimension(300,300));
+    }
+
+
+
+
+    void myWorkAction(){
+            if (panel2expanded){
+                    panel2expanded = false;
+                    panel2.setPreferredSize(new Dimension(500,100));
+                    panel2.revalidate();
+                    panel2.repaint();
+                    
+            }
+            else {
+                    panel2expanded = true;
+                    panel2.setPreferredSize(new Dimension(500,500));
+                    panel2.revalidate();
+                    panel2.repaint();
+                    
+            }
+    }
+    void recentAction(){
+            if (panelexpanded){
+                    panelexpanded = false;
+                    panel.setPreferredSize(new Dimension(500,100));
+                    panel.revalidate();
+                    panel.repaint();
+            }
+            else {
+                    panelexpanded = true;
+                    panel.setPreferredSize(new Dimension(500,500));
+                    panel.revalidate();
+                    panel.repaint();
+            }
+    }
+
 }
+
  
    
     
     
-}
+
