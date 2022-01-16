@@ -16,7 +16,7 @@ public class HomePadding extends JPanel {
     final private JLabel rightsidepadding = new JLabel();
     final private String Text1 = "Expand";
     private JPanel mainPanel_homePadding;
-    final private JLabel label = new JLabel();
+
     
     final private JButton recentTab  = new JButton(Text1) ;
     final private JButton myWorkSpace = new JButton(Text1) ;
